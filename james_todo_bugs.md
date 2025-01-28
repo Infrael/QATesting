@@ -5,3 +5,6 @@
     - Instead of expanding\contracting it marks all Items as either done or not done.
     - Color change of the arrow happens only on a 3rd click.
 - Clear function only clears completed.
+- Adding a VEEERY long Item takes too long to add\hangs the app.
+    - Amending a VEEERY long Item crashes app.
+    - Trying to add a lot of Space between text gives Out Of Memory error.
