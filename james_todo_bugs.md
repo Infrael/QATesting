@@ -1,6 +1,4 @@
 # James TODO
-
-## What was done incorrectly:
 - New Item appears at the end of the list.
 - If all Items are completed, Total Active is shown as -1 instead of 0.
 - Drop Down arrow functionality:
