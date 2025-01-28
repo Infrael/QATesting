@@ -8,3 +8,6 @@
 - Adding a VEEERY long Item takes too long to add\hangs the app.
     - Amending a VEEERY long Item crashes app.
     - Trying to add a lot of Space between text gives Out Of Memory error.
+- Console:
+    - base.js:137 - GET https://todolist.james.am/learn.json 404 (Not Found)
+    - angular.js 10514 - GET https://todolist.james.am/api 404 (Not Found)
