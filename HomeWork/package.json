@@ -1,0 +1,15 @@
+{
+  "name": "emploee",
+  "version": "0.0.1",
+  "description": "Ultra Fast Task",
+  "main": "app.js",
+  "scripts": {
+    "test": "app.js",
+    "start": "node app.js"
+  },
+  "author": "Infrael <martisius.z@gmail.com> (https://github.com/Infrael)",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
