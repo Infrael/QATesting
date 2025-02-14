@@ -10,6 +10,8 @@
   "author": "Infrael <martisius.z@gmail.com> (https://github.com/Infrael)",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "express": "^4.21.2"
   }
 }
