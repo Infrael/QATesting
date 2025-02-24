@@ -1,0 +1,1101 @@
+{
+	"info": {
+		"_postman_id": "ae2a97d7-7d66-40d1-b4ab-57296d94fda4",
+		"name": "Automation Exercise API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41672979"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "POST To Create/Register User Account",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 201);",
+									"    pm.expect(jsonData.message).to.include(\"User created\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{valid_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{valid_password}}",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "{{title}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "{{birth_date}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_month",
+									"value": "{{birth_month}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_year",
+									"value": "{{birth_year}}",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "{{firstname}}",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "{{lastname}}",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "{{company}}",
+									"type": "text"
+								},
+								{
+									"key": "address1",
+									"value": "{{address1}}",
+									"type": "text"
+								},
+								{
+									"key": "address2",
+									"value": "{{address2}}",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "{{country}}",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "{{zipcode}}",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "{{city}}",
+									"type": "text"
+								},
+								{
+									"key": "mobile_number",
+									"value": "{{mobile_number}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/createAccount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"createAccount"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "{{name}}",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "{{title}}",
+									"disabled": true
+								},
+								{
+									"key": "birth_date",
+									"value": "{{birth_date}}",
+									"disabled": true
+								},
+								{
+									"key": "birth_month",
+									"value": "{{birth_month}}",
+									"disabled": true
+								},
+								{
+									"key": "birth_year",
+									"value": "{{birth_year}}",
+									"disabled": true
+								},
+								{
+									"key": "firstname",
+									"value": "{{firstname}}",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "{{lastname}}",
+									"disabled": true
+								},
+								{
+									"key": "company",
+									"value": "{{company}}",
+									"disabled": true
+								},
+								{
+									"key": "address1",
+									"value": "{{address1}}",
+									"disabled": true
+								},
+								{
+									"key": "address2",
+									"value": "{{address2}}",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "{{country}}",
+									"disabled": true
+								},
+								{
+									"key": "zipcode",
+									"value": "{{zipcode}}",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "{{state}}",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "{{city}}",
+									"disabled": true
+								},
+								{
+									"key": "mobile_number",
+									"value": "{{mobile_number}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET user account detail by email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains expected user data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    ",
+									"    pm.expect(jsonData).to.be.an(\"object\");",
+									"",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 200);",
+									"",
+									"    pm.expect(jsonData).to.have.property(\"user\");",
+									"    pm.expect(jsonData.user).to.be.an(\"object\");",
+									"",
+									"    pm.expect(jsonData.user).to.have.property(\"id\");",
+									"    pm.expect(jsonData.user).to.have.property(\"name\");",
+									"    pm.expect(jsonData.user).to.have.property(\"email\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/getUserDetailByEmail?email={{valid_email}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"getUserDetailByEmail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{valid_email}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT METHOD To Update User Account",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response confirms user update\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"User updated!\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{valid_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{valid_password}}",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "{{title}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "{{birth_date}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_month",
+									"value": "{{birth_month}}",
+									"type": "text"
+								},
+								{
+									"key": "birth_year",
+									"value": "{{birth_year}}",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "{{firstname}}",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "{{lastname}}",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "{{company}}",
+									"type": "text"
+								},
+								{
+									"key": "address1",
+									"value": "{{address1}}",
+									"type": "text"
+								},
+								{
+									"key": "address2",
+									"value": "{{address2}}",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "{{country}}",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "{{zipcode}}",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "{{city}}",
+									"type": "text"
+								},
+								{
+									"key": "mobile_number",
+									"value": "{{mobile_number}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/updateAccount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"updateAccount"
+							]
+						}
+					},
+					"response": []
+				},
+								{
+					"name": "POST To Verify Login with valid details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response message confirms user exists\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"User exists!\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{valid_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{valid_password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/verifyLogin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"verifyLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE METHOD To Delete User Account",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response confirms account deletion\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"Account deleted!\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{valid_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{valid_password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/deleteAccount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"deleteAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "POST To Verify Login without email parameter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 400);",
+									"    pm.expect(jsonData.message).to.include(\"Bad request, email or password parameter is missing in POST request.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"{{valid_password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/verifyLogin?password={{invalid_password}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"verifyLogin"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "{{invalid_password}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST To Verify Login with invalid details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 404);",
+									"    pm.expect(jsonData.message).to.include(\"User not found!\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{invalid_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{invalid_password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/verifyLogin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"verifyLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE To Verify Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 405);",
+									"    pm.expect(jsonData.message).to.include(\"This request method is not supported.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/verifyLogin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"verifyLogin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Products List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is in JSON format\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an(\"object\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/productsList",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productsList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST To All Products List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 405);",
+									"    pm.expect(jsonData.message).to.include(\"This request method is not supported.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/productsList",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productsList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Brands List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is in JSON format\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains expected brand list\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an(\"object\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/brandsList",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"brandsList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT To All Brands List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 405);",
+									"    pm.expect(jsonData.message).to.include(\"This request method is not supported.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/brandsList",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"brandsList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST To Search Product",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is in JSON format\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains expected product list\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData.products).to.be.an(\"array\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "search_product",
+									"value": "jean",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/searchProduct",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"searchProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST To Search Product without search_product parameter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"    pm.environment.set(\"timestamp\", new Date().toISOString());",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains expected data\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"responseCode\", 400);",
+									"    pm.expect(jsonData.message).to.include(\"Bad request, search_product parameter is missing in POST request.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/searchProduct",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"searchProduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

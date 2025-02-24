@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "report": "newman run \"./Automation Exercise API.postman_collection\" -e \"./Automation Excercise.postman_environment.json\" -r htmlextra"
   },
   "author": "Infrael <martisius.z@gmail.com> (https://github.com/Infrael)",
   "license": "GPL-3.0-or-later",
