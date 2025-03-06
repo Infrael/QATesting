@@ -20,6 +20,19 @@ const pool = new Pool({
 // Middleware
 app.use(bodyParser.json());
 
+// Get all users
+app.get('/users', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT id, username, email, title, created_at, updated_at FROM users'
+        );
+
+        res.json({ users: result.rows });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 // Create users table
 (async () => {
     const createTableQuery = `
@@ -113,6 +126,33 @@ app.put('/user/:id', authenticate, async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+// Delete user by ID
+app.delete('/user/:id', authenticate, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const deleteUserId = parseInt(req.params.id);
+
+        // Check if the user is deleting their own profile
+        if (userId !== deleteUserId) {
+            return res.status(403).json({ error: 'You can only delete your own account' });
+        }
+
+        const result = await pool.query(
+            'DELETE FROM users WHERE id = $1 RETURNING id, username, email',
+            [deleteUserId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json({ message: 'User deleted successfully', user: result.rows[0] });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 
 // Start server
 app.listen(port, () => {
