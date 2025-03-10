@@ -1,16 +1,24 @@
-name: Run Cypress Tests
+name: Run Cypress Tests (Tic-Tac-Toe)
 
 on:
   push:
+    paths:
+      - 'tic_tac_toe/**'
     branches:
       - main
+      - develop
   pull_request:
+    paths:
+      - 'tic_tac_toe/**'
     branches:
       - main
 
 jobs:
   cypress-run:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: tic_tac_toe  # Forces all commands to run inside this subfolder
 
     steps:
       - name: Checkout repository
@@ -27,7 +35,7 @@ jobs:
       - name: Start Vite server
         run: npm run dev &
         env:
-          NODE_ENV: testw
+          NODE_ENV: test
 
       - name: Wait for server to be ready
         run: npx wait-on http://localhost:5173
@@ -35,7 +43,7 @@ jobs:
       - name: Run Cypress tests
         run: npx cypress run
 
-      - name: Upload Cypress screenshots and videos on failure
+      - name: Upload Cypress artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v3
         with:
