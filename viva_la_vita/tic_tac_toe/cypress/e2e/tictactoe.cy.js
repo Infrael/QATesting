@@ -27,7 +27,7 @@ describe("Tic-Tac-Toe App", () => {
   });
 
   it("recognizes a winning condition (e.g., top row for X)", () => {
-    // Fill the top row with X
+    // Fill the top row with X  (0, 1, 2)
     cy.get(".square").eq(0).click(); // X
     cy.get(".square").eq(1).click(); // O
     cy.get(".square").eq(3).click(); // X
