@@ -6,12 +6,13 @@ on:
       - 'tic_tac_toe/**'
     branches:
       - main
-      - develop
   pull_request:
     paths:
       - 'tic_tac_toe/**'
     branches:
       - main
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
 
 jobs:
   cypress-run:
