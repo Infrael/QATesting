@@ -33,17 +33,17 @@ jobs:
 
       - name: Start Vite server
         run: npm run dev &
-        working-directory: tic_tac_toe
+        working-directory: viva_la_vita/tic_tac_toe
         env:
           NODE_ENV: test
 
       - name: Wait for server to be ready
         run: npx wait-on http://localhost:5173
-        working-directory: tic_tac_toe
+        working-directory: viva_la_vita/tic_tac_toe
 
       - name: Run Cypress tests
         run: npx cypress run
-        working-directory: tic_tac_toe
+        working-directory: viva_la_vita/tic_tac_toe
 
       - name: Upload Cypress artifacts on failure
         if: failure()
