@@ -4,7 +4,7 @@ describe("Tic-Tac-Toe App", () => {
   beforeEach(() => {
     // Adjust the URL to match your local dev server (e.g., http://localhost:5173)
     cy.visit("http://localhost:5173");
-    cy.my_command("Changed", "4Testing");
+    cy.my_command("Trying", "Automated Testing");
   });
 
   it("renders the initial game elements", () => {
