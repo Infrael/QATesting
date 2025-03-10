@@ -3,13 +3,12 @@ name: Run Cypress Tests (Tic-Tac-Toe)
 on:
   push:
     paths:
-      - 'tic_tac_toe/**'
+      - 'viva_la_vita/tic_tac_toe/**'
     branches:
       - main
-      - develop
   pull_request:
     paths:
-      - 'tic_tac_toe/**'
+      - 'viva_la_vita/tic_tac_toe/**'
     branches:
       - main
   workflow_dispatch:
