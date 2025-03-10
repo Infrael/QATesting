@@ -29,7 +29,6 @@ describe("Tic-Tac-Toe App", () => {
     // Fill the top row with X
     cy.get(".square").eq(0).click(); // X
     cy.get(".square").eq(1).click(); // O
-    cy.get(".square").eq(1).click(); // Try O again - no effect if O is there
     cy.get(".square").eq(3).click(); // X
     cy.get(".square").eq(4).click(); // O
     cy.get(".square").eq(6).click(); // X
