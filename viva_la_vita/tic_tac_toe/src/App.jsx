@@ -39,14 +39,15 @@ function App() {
           ? `Winner: ${winner}`
           : `Next Player: ${isXNext ? "X" : "O"}`}
       </h2>
-      <button className="reset" onClick={() => setBoard(Array(9).fill(null))}>
-        Reset
-      </button>
+      <button className="reset" onClick={() => {
+        setBoard(Array(9).fill(null));
+        setIsXNext(true);
+      }}> Reset </button>
     </div>
   );
 }
 
-function calculateWinner(board) {
+export function calculateWinner(board) {
   const lines = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
