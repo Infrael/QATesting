@@ -1,0 +1,17 @@
+{
+  "name": "cypress001",
+  "version": "1.0.0",
+  "description": "CypressTask",
+  "main": "spec.cy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.2.0"
+  }
+}

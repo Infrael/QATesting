@@ -1,0 +1,25 @@
+Projektui reikės:
+1. Node.js ir npm;
+2. Cypress;
+3. live-server (extension).
+
+Projekto sukūrimo eiga:
+1. Susikurkite aplanką, kuriame bus projektas;
+2. Inicializuokite Node.js projektą, t. y. terminale paleiskite npm init -y;
+3. Įdiekite Cypress kaip dev priklausomybę, t. y. terminale paleiskite npm install cypress --save-dev;
+4. Susikurkite .gitignore failą ir įrašykite į jį node_modules;
+5. Įdėkite index html failą į projekto aplanką;
+6. Paleiskite index.html per live-server extension'ą;
+7. Cypress:
+7.1. terminale paleidžiame npx cypress open, leidžiant pirmą kartą, pasirenkame e2e ir leidžiame sukurti reikalingas aplankus ir failus, sutinkame, kad sukurtų testų failą (numatytasis e2e -> spec.cy.js); 
+7.2. Projekto aplanke esančiame cypress.config.js faile nurodome statinio serverio adresą e2e objekte:
+  "baseUrl": "http://127.0.0.1:5500"
+p. s. paskutiniai skaičiai gali skirtis, įrašyti tokius kokius jums paleidžia live-server. 
+7.3. Pasipildykite package.json failą script'ais, kurie leis lengviau paleisti cypress, pvz.:
+  "scripts": {
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run"
+  },
+7.4. Rašome testus ir juos leidžiame su scriptais.
+
+Užduotis rasite task.cy.js faile.

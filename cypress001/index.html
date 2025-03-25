@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cypress automatinių testų praktikos puslapis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 5px 0;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        #section-basic {
+            background-color: #1E3A8A;
+            color: #FFFFFF;
+        }
+
+        #action-type {
+            background-color: #FFFFFF;
+            color: #1E3A8A;
+        }
+
+        #section-login {
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+
+        #login-button {
+            background-color: #1E293B;
+            color: #F8FAFC;
+        }
+
+        #section-list {
+            background-color: #0F766E;
+            color: #FFFFFF;
+        }
+
+        #section-api {
+            background-color: #FDE047;
+            color: #1E293B;
+        }
+
+        #fetch-data {
+            background-color: #1E293B;
+            color: #FDE047;
+        }
+
+        #section-async {
+            background-color: #7C3AED;
+            color: #FFFFFF;
+        }
+
+        #async-action {
+            background-color: #FFFFFF;
+            color: #7C3AED;
+        }
+
+        #section-hover {
+            background-color: #0F172A;
+            color: #CBD5E1;
+        }
+
+        .banner {
+            background-color: #f0f0f0;
+            color: #1E3A8A;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .tooltip {
+            display: none;
+            color: #fff;
+            background-color: #333;
+            padding: 5px;
+            position: absolute;
+            top: -100%;
+            left: 200px;
+            white-space: nowrap;
+        }
+
+        .hover-box {
+            width: 200px;
+            height: 100px;
+            background-color: #e0e0e0;
+            color: #0F172A;
+            position: relative;
+            margin-top: 10px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Pagrindinis puslapio testas: Banner ir mygtukas "type" -->
+    <section id="section-basic">
+        <h2>Pagrindinis puslapis</h2>
+        <div class="banner">Sveiki atvykę į Cypress testų puslapį!</div>
+        <button id="action-type">Užkrauti</button>
+    </section>
+
+    <!-- 2. Formos sąveikos testas: Prisijungimo forma -->
+    <section id="section-login">
+        <h2>Prisijungimo forma</h2>
+        <form id="login-form">
+            <label for="username">Vartotojo vardas:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Slaptažodis:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit" id="login-button">Prisijungti</button>
+        </form>
+        <div id="greeting" style="margin-top:10px; display:none;"></div>
+        <div id="profile" style="margin-top:10px; display:none;">
+            <h3>Studento profilis</h3>
+            <p>Čia yra studento profilio informacija.</p>
+        </div>
+    </section>
+
+    <!-- 3. Dinaminiai elementai: Sąrašo elementai -->
+    <section id="section-list">
+        <h2>Sąrašas</h2>
+        <ul id="item-list">
+            <li class="list-item">Item 1</li>
+            <li class="list-item">Item 2</li>
+            <li class="list-item">Item 3</li>
+        </ul>
+    </section>
+
+    <!-- 4. API užklausų testas -->
+    <section id="section-api">
+        <h2>API Duomenų Užklausos Testas</h2>
+        <button id="fetch-data">Gauti duomenis</button>
+        <div class="data-container" style="margin-top:10px; border:1px solid #000; padding:10px;">
+            Čia bus rodomi gauti duomenys.
+        </div>
+    </section>
+
+    <!-- 5. Asinchroninė operacija -->
+    <section id="section-async">
+        <h2>Asinchroninė operacija</h2>
+        <button id="async-action">Paleisti asinchroninę operaciją</button>
+        <div id="async-result" style="margin-top:10px;"></div>
+    </section>
+
+    <!-- 6. Hover efektas: Elementas su tooltip -->
+    <section id="section-hover">
+        <h2>Hover efektas</h2>
+        <div class="hover-box" id="hover-box">
+            Užvesk pelę čia
+            <div class="tooltip" id="tooltip">Papildoma informacija</div>
+        </div>
+    </section>
+
+    <script>
+        // 1. "type" mygtuko paspaudimas – keičia URL ir parodo pranešimą
+        document.getElementById('action-type').addEventListener('click', function () {
+            // Pakeičiame URL naudojant history API
+            window.history.pushState({}, '', '/commands/actions');
+            alert('Navigacija į /commands/actions atlikta!');
+        });
+
+        // 2. Prisijungimo formos apdorojimas – rodo sveikinimo žinutę ir profilio informaciją
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // užkerta kelią puslapio perkrovimui
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // Paprasta validacija – jei įvesti duomenys egzistuoja
+            if (username && password) {
+                document.getElementById('greeting').innerText = 'Sveiki, ' + username;
+                document.getElementById('greeting').style.display = 'block';
+                document.getElementById('profile').style.display = 'block';
+            }
+        });
+
+        // 4. API užklausos vykdymas – paspaudus mygtuką siunčiama užklausa į /api/data
+        document.getElementById('fetch-data').addEventListener('click', function () {
+            fetch('data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Tinklo klaida');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Pavaizduojame gautus duomenis (pavyzdžiui, rodyti žinutę)
+                    document.querySelector('.data-container').innerHTML = `<h3>${data.message}</h3>`;
+                })
+                .catch(error => {
+                    document.querySelector('.data-container').innerText = 'Klaida: ' + error.message;
+                });
+        });
+
+        // 5. Asinchroninė operacija – naudojama setTimeout, kad simuliuotų asinchroninį veiksmą
+        document.getElementById('async-action').addEventListener('click', function () {
+            document.getElementById('async-result').innerText = 'Operacija prasidėjo...';
+            setTimeout(function () {
+                document.getElementById('async-result').innerText = 'Asinchroninė operacija baigta!';
+            }, 3000);
+        });
+
+        // 6. Hover efektas – parodyti tooltip, kai užvedama pele ant elemento
+        const hoverBox = document.getElementById('hover-box');
+        const tooltip = document.getElementById('tooltip');
+        hoverBox.addEventListener('mouseover', function () {
+            tooltip.style.display = 'block';
+        });
+        hoverBox.addEventListener('mouseout', function () {
+            tooltip.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
